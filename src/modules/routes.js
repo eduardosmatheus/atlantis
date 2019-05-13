@@ -1,4 +1,6 @@
 import React from 'react';
+import MarinesForm from '../pages/Marines/New';
+import Marines from '../pages/Marines';
 
 function About() {
   return <h2>About</h2>;
@@ -12,8 +14,8 @@ function Users() {
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/marines', exact: true, name: 'Marinas', component: About },
-  { path: '/marines/new', name: 'New', component: About },
-  { path: '/marines/list', name: 'List', component: About },
+  { path: '/marines/new', name: 'New', component: MarinesForm },
+  { path: '/marines/list', name: 'List', component: Marines },
   { path: '/sailors', name: 'Marinheiros', component: About },
   { path: '/boats', name: 'Embarcações', component: About },
   { path: '/schedules', name: 'Agenda', component: About },
