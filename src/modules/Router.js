@@ -2,20 +2,16 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
 } from "react-router-dom";
 import Layout from '../pages/Layout';
-
-function Index() {
-  return <h2>Signin</h2>;
-}
+import SignIn from '../pages/SignIn';
 
 function AppRouter() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/Signin" component={Index} />
+        <Route exact path="/signin" component={SignIn} />
         <Route path="/" render={props => <Layout {...props} />} />
       </Switch>
     </Router>

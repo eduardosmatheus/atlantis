@@ -8,7 +8,7 @@ instance.interceptors.request.use((config) => {
   const token = localStorage.getItem('app.authToken');
   const newConfig = config;
   if (token) {
-    newConfig.headers.common.Authorization = token;
+    newConfig.headers.common.Authorization = `Bearer ${token}`;
   }
   return newConfig;
 });
