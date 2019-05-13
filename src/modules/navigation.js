@@ -37,6 +37,18 @@ export default {
       name: 'Agenda',
       url: '/schedules',
       icon: 'fa fa-calendar',
+      children: [
+        {
+          name: 'Novo',
+          url: '/schedules/new',
+          icon: 'fa fa-plus',
+        },
+        {
+          name: 'Agendamentos',
+          url: '/schedules/list',
+          icon: 'fa fa-list',
+        },
+      ]
     },
     {
       name: 'Users',

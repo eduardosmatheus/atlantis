@@ -3,10 +3,8 @@ import MarinesForm from '../pages/Marines/New';
 import Marines from '../pages/Marines';
 import Sailors from '../pages/Sailors';
 import Boats from '../pages/Boats';
-
-function About() {
-  return <h2>About</h2>;
-}
+import Schedules from '../pages/Schedules';
+import SchedulesForm from '../pages/Schedules/New';
 
 function Users() {
   return <h2>Users</h2>;
@@ -22,7 +20,9 @@ const routes = [
   { path: '/sailors/list', name: 'List', component: Sailors },
   { path: '/boats', exact: true, name: 'Embarcações', component: Boats },
   { path: '/boats/list', name: 'Embarcações', component: Boats },
-  { path: '/schedules', name: 'Agenda', component: About },
+  { path: '/schedules', exact: true, name: 'Agenda', component: Schedules },
+  { path: '/schedules/list', name: 'Agenda', component: Schedules },
+  { path: '/schedules/new', name: 'New', component: SchedulesForm },
   { path: '/users', name: 'Users', component: Users },
 ];
 
