@@ -18,7 +18,7 @@ const columns = [
     align: 'left',
     width: 100,
     sortable: false,
-    cell: MarineActions
+    cell: BoatActions
   },
   
 ];
@@ -28,7 +28,7 @@ const tableConfig = {
   length_menu: [ 10, 20, 50 ],
 };
 
-function MarineActions(record) {
+function BoatActions(record) {
   return (
     <>
       <Button variant="info">
@@ -41,34 +41,34 @@ function MarineActions(record) {
   );
 }
 
-class Marines extends Component {
+class Boats extends Component {
 
   state = {
-    marines: []
+    boats: []
   }
 
   componentDidMount() {
-    this.loadMarines();
+    this.loadBoats();
   }
 
-  loadMarines = async () => {
+  loadBoats = async () => {
     try {
-      const { data: marines } = await axios.get('/secure/marines');
-      this.setState({ marines: marines.data });
+      const { data: boats } = await axios.get('/secure/boats');
+      this.setState({ boats: boats.data });
     } catch (error) {
       toast.error(error.message);
     }
   }
 
   render() {
-    const { marines } = this.state;
+    const { boats } = this.state;
     return (
       <Card>
-        <Card.Header>Marinas</Card.Header>
+        <Card.Header>Embarcações</Card.Header>
         <Card.Body>
           <ReactDatatable
             config={tableConfig}
-            records={marines}
+            records={boats}
             columns={columns}
           />
         </Card.Body>
@@ -77,4 +77,4 @@ class Marines extends Component {
   }
 }
 
-export default Marines;
+export default Boats;
