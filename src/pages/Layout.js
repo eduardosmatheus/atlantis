@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { Container } from 'reactstrap';
-
+import { ToastContainer } from 'react-toastify';
 import {
   AppAside,
   AppBreadcrumb,
@@ -30,9 +30,9 @@ class Layout extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="app">
+        <ToastContainer />
         <AppHeader fixed>
           <Header />
         </AppHeader>
