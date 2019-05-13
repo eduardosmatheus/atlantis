@@ -38,7 +38,6 @@ export default class ScheduleForm extends PureComponent {
     this.setState({ boats: boats.data });
     const { data: sailors } = await axios.get('/secure/sailors');
     this.setState({ sailors: sailors.data });
-    
   }
 
   handleFieldChange = ({ target: { name, value } }) => this.setState({
