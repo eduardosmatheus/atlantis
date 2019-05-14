@@ -83,6 +83,8 @@ export default class ScheduleForm extends PureComponent {
 
   render() {
     const {
+      boats,
+      marines,
       boat,
       marine,
       sailor,
@@ -92,9 +94,6 @@ export default class ScheduleForm extends PureComponent {
     } = this.state;
     return (
       <Card>
-        <Card.Header>
-          Agendamento
-        </Card.Header>
         <Card.Body>
           <Form onSubmit={this.handleSubmit}>
             <Form.Row>
@@ -102,7 +101,7 @@ export default class ScheduleForm extends PureComponent {
                 <FormLabel>Embarcação</FormLabel>
                 <Select
                   isClearable
-                  options={this.state.boats}
+                  options={boats}
                   value={boat}
                   getOptionLabel={o => o.name}
                   getOptionValue={o => o.id}
@@ -115,7 +114,7 @@ export default class ScheduleForm extends PureComponent {
                 <FormLabel>Marina</FormLabel>
                 <Select
                   isClearable
-                  options={this.state.marines}
+                  options={marines}
                   value={marine}
                   getOptionLabel={o => o.name}
                   getOptionValue={o => o.id}
@@ -126,7 +125,7 @@ export default class ScheduleForm extends PureComponent {
               </FormGroup>
             </Form.Row>
             <Form.Row>
-              <FormGroup as={Col}>
+              <FormGroup as={Col} md="4">
                 <FormLabel>Data/Hora</FormLabel>
                 <InputGroup>
                   <InputGroup.Prepend>
@@ -139,6 +138,24 @@ export default class ScheduleForm extends PureComponent {
                     type="datetime-local"
                     name="date"
                     value={date}
+                    onChange={this.handleFieldChange}
+                  />
+                </InputGroup>
+              </FormGroup>
+              <FormGroup as={Col}>
+                <FormLabel>Enviar para:</FormLabel>
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <i className="fa fa-at" />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <FormControl
+                    required
+                    type="email"
+                    name="email"
+                    value={email}
+                    placeholder="E-mail..."
                     onChange={this.handleFieldChange}
                   />
                 </InputGroup>
@@ -172,27 +189,11 @@ export default class ScheduleForm extends PureComponent {
               </FormGroup>
             </Form.Row>
             <Form.Row>
-              <FormGroup as={Col}>
-                <FormLabel>Enviar para:</FormLabel>
-                <InputGroup>
-                  <InputGroup.Prepend>
-                    <InputGroup.Text>
-                      <i className="fa fa-at" />
-                    </InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <FormControl
-                    required
-                    type="email"
-                    name="email"
-                    value={email}
-                    placeholder="E-mail..."
-                    onChange={this.handleFieldChange}
-                  />
-                </InputGroup>
-              </FormGroup>
             </Form.Row>
             <Button variant="success" type="submit">
-              Confirmar
+              <i className="fa fa-save" />
+              {' '}
+              Salvar
             </Button>
           </Form>
         </Card.Body>

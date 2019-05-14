@@ -139,88 +139,92 @@ class Sailors extends Component {
       boat
     } = this.state;
     return (
-      <Card>
-        <Card.Header>Agendamentos</Card.Header>
-        <Card.Body>
+      <>
+        <Card>
+          <Card.Header>Agendamentos</Card.Header>
+          <Card.Body>
           <Form onSubmit={this.loadSchedules}>
-            <Form.Row>
-              <FormGroup as={Col} md="3">
-                <FormLabel>De:</FormLabel>
-                <InputGroup>
-                  <InputGroup.Prepend>
-                    <InputGroup.Text>
-                      <i className="fa fa-calendar" />
-                    </InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <FormControl
-                    type="date"
-                    name="initialDate"
-                    value={initialDate}
-                    onChange={this.handleFieldChange}
+              <Form.Row>
+                <FormGroup as={Col} md="3">
+                  <FormLabel>De:</FormLabel>
+                  <InputGroup>
+                    <InputGroup.Prepend>
+                      <InputGroup.Text>
+                        <i className="fa fa-calendar" />
+                      </InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                      type="date"
+                      name="initialDate"
+                      value={initialDate}
+                      onChange={this.handleFieldChange}
+                    />
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup as={Col} md="3">
+                  <FormLabel>Até</FormLabel>
+                  <InputGroup>
+                    <InputGroup.Prepend>
+                      <InputGroup.Text>
+                        <i className="fa fa-calendar" />
+                      </InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                      type="date"
+                      min={initialDate}
+                      name="finalDate"
+                      value={finalDate}
+                      onChange={this.handleFieldChange}
+                    />
+                  </InputGroup>
+                </FormGroup>
+                <FormGroup as={Col} md="3">
+                  <FormLabel>Embarcação</FormLabel>
+                  <Select
+                    isClearable
+                    isLoading={boats.length === 0}
+                    options={boats}
+                    value={boat}
+                    getOptionLabel={o => o.name}
+                    getOptionValue={o => o.id}
+                    noOptionsMessage={() => 'Barco não encontrado.'}
+                    placeholder="Embarcação..."
+                    onChange={o => this.handleSelectChange('boat', o)}
                   />
-                </InputGroup>
-              </FormGroup>
-              <FormGroup as={Col} md="3">
-                <FormLabel>Até</FormLabel>
-                <InputGroup>
-                  <InputGroup.Prepend>
-                    <InputGroup.Text>
-                      <i className="fa fa-calendar" />
-                    </InputGroup.Text>
-                  </InputGroup.Prepend>
-                  <FormControl
-                    type="date"
-                    min={initialDate}
-                    name="finalDate"
-                    value={finalDate}
-                    onChange={this.handleFieldChange}
+                </FormGroup>
+                <FormGroup as={Col} md="3">
+                  <FormLabel>Marina</FormLabel>
+                  <Select
+                    isClearable
+                    isLoading={marines.length === 0}
+                    options={marines}
+                    value={marine}
+                    getOptionLabel={o => o.name}
+                    getOptionValue={o => o.id}
+                    noOptionsMessage={() => 'Marina não encontrada.'}
+                    placeholder="Marina...."
+                    onChange={o => this.handleSelectChange('marine', o)}
                   />
-                </InputGroup>
-              </FormGroup>
-              <FormGroup as={Col} md="3">
-                <FormLabel>Embarcação</FormLabel>
-                <Select
-                  isClearable
-                  isLoading={boats.length === 0}
-                  options={boats}
-                  value={boat}
-                  getOptionLabel={o => o.name}
-                  getOptionValue={o => o.id}
-                  noOptionsMessage={() => 'Barco não encontrado.'}
-                  placeholder="Embarcação..."
-                  onChange={o => this.handleSelectChange('boat', o)}
-                />
-              </FormGroup>
-              <FormGroup as={Col} md="3">
-                <FormLabel>Marina</FormLabel>
-                <Select
-                  isClearable
-                  isLoading={marines.length === 0}
-                  options={marines}
-                  value={marine}
-                  getOptionLabel={o => o.name}
-                  getOptionValue={o => o.id}
-                  noOptionsMessage={() => 'Marina não encontrada.'}
-                  placeholder="Marina...."
-                  onChange={o => this.handleSelectChange('marine', o)}
-                />
-              </FormGroup>
-            </Form.Row>
-            <Button type="submit" variant="primary">
-              <i className="fa fa-search" />
-              {' '}
-              Consultar
-            </Button>
-          </Form>
-          <br />
-          <br />
-          <ReactDatatable
-            config={tableConfig}
-            records={schedules}
-            columns={columns}
-          />
-        </Card.Body>
-      </Card>
+                </FormGroup>
+              </Form.Row>
+              <Button type="submit" variant="primary">
+                <i className="fa fa-search" />
+                {' '}
+                Consultar
+              </Button>
+            </Form>
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Body>
+            <ReactDatatable
+              config={tableConfig}
+              records={schedules}
+              columns={columns}
+            />
+          </Card.Body>
+        </Card>
+      </>
     )
   }
 }
