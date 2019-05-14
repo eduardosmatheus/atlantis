@@ -129,9 +129,11 @@ export default class ScheduleForm extends PureComponent {
               <FormGroup as={Col}>
                 <FormLabel>Data/Hora</FormLabel>
                 <InputGroup>
-                  <InputGroup.Text>
-                    <i className="fa fa-calendar" />
-                  </InputGroup.Text>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <i className="fa fa-calendar" />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
                   <FormControl
                     required
                     type="datetime-local"
@@ -173,9 +175,11 @@ export default class ScheduleForm extends PureComponent {
               <FormGroup as={Col}>
                 <FormLabel>Enviar para:</FormLabel>
                 <InputGroup>
-                  <InputGroup.Text>
-                    <i className="fa fa-at" />
-                  </InputGroup.Text>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <i className="fa fa-at" />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
                   <FormControl
                     required
                     type="email"

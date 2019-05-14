@@ -45,11 +45,12 @@ class Login extends Component {
               <Card.Body>
                 <Form onSubmit={this.handleLogin}>
                   <h1>Login</h1>
-                  <p className="text-muted">Sign In to your account</p>
                   <InputGroup className="mb-3">
-                    <InputGroup.Text>
-                      <i className="icon-user"></i>
-                    </InputGroup.Text>
+                    <InputGroup.Prepend>
+                      <InputGroup.Text>
+                        <i className="icon-user"></i>
+                      </InputGroup.Text>
+                    </InputGroup.Prepend>
                     <FormControl
                       required
                       type="email"
@@ -59,9 +60,11 @@ class Login extends Component {
                     />
                   </InputGroup>
                   <InputGroup className="mb-4">
-                    <InputGroup.Text>
-                      <i className="icon-lock"></i>
-                    </InputGroup.Text>
+                    <InputGroup.Prepend>
+                      <InputGroup.Text>
+                        <i className="icon-lock"></i>
+                      </InputGroup.Text>
+                    </InputGroup.Prepend>
                     <FormControl
                       required
                       type="password"
@@ -71,11 +74,21 @@ class Login extends Component {
                     />
                   </InputGroup>
                   <Row>
-                    <Col xs="6">
-                      <Button type="submit" color="primary" className="px-4">Login</Button>
+                    <Col>
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="px-4"
+                      >
+                        <i className="fa fa-sign-in" />
+                        {' '}
+                        Login
+                      </Button>
                     </Col>
-                    <Col xs="6" className="text-right">
-                      <Button color="link" className="px-0">Forgot password?</Button>
+                    <Col>
+                      <Button variant="link">
+                        Forgot password?
+                      </Button>
                     </Col>
                   </Row>
                 </Form>

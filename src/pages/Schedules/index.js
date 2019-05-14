@@ -144,12 +144,14 @@ class Sailors extends Component {
         <Card.Body>
           <Form onSubmit={this.loadSchedules}>
             <Form.Row>
-              <FormGroup as={Col} md="2">
+              <FormGroup as={Col} md="3">
                 <FormLabel>De:</FormLabel>
                 <InputGroup>
-                  <InputGroup.Text>
-                    <i className="fa fa-calendar" />
-                  </InputGroup.Text>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <i className="fa fa-calendar" />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
                   <FormControl
                     type="date"
                     name="initialDate"
@@ -158,12 +160,14 @@ class Sailors extends Component {
                   />
                 </InputGroup>
               </FormGroup>
-              <FormGroup as={Col} md="2">
+              <FormGroup as={Col} md="3">
                 <FormLabel>Até</FormLabel>
                 <InputGroup>
-                  <InputGroup.Text>
-                    <i className="fa fa-calendar" />
-                  </InputGroup.Text>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <i className="fa fa-calendar" />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
                   <FormControl
                     type="date"
                     min={initialDate}
@@ -173,10 +177,11 @@ class Sailors extends Component {
                   />
                 </InputGroup>
               </FormGroup>
-              <FormGroup as={Col} md="2">
+              <FormGroup as={Col} md="3">
                 <FormLabel>Embarcação</FormLabel>
                 <Select
                   isClearable
+                  isLoading={boats.length === 0}
                   options={boats}
                   value={boat}
                   getOptionLabel={o => o.name}
@@ -186,10 +191,11 @@ class Sailors extends Component {
                   onChange={o => this.handleSelectChange('boat', o)}
                 />
               </FormGroup>
-              <FormGroup as={Col} md="2">
+              <FormGroup as={Col} md="3">
                 <FormLabel>Marina</FormLabel>
                 <Select
                   isClearable
+                  isLoading={marines.length === 0}
                   options={marines}
                   value={marine}
                   getOptionLabel={o => o.name}
