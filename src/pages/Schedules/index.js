@@ -7,21 +7,21 @@ import axios from '../../axios-common';
 
 const columns = [
   {
-    key: 'boat_id',
+    key: 'boat_name',
     text: 'Barco',
     align: 'left',
     width: 100,
     sortable: true
   },
   {
-    key: 'marine_id',
+    key: 'marine_name',
     text: 'Marina',
     align: 'left',
     width: 100,
     sortable: true
   },
   {
-    key: 'sailor_id',
+    key: 'sailor_name',
     text: 'Marinheiro',
     align: 'left',
     width: 100,
@@ -41,7 +41,7 @@ const columns = [
   },
   {
     key: 'observation',
-    text: 'Barco',
+    text: 'Observação',
     align: 'left',
     width: 100,
     sortable: true
@@ -55,7 +55,7 @@ const columns = [
   },
   {
     key: 'actions',
-    text: '',
+    text: 'Ações',
     align: 'left',
     width: 100,
     sortable: false,
@@ -128,7 +128,23 @@ class Sailors extends Component {
           boat_id: boat && boat.id
         }
       });
-      this.setState({ schedules: schedules.data });
+      console.log(schedules);
+      const data = schedules.data.map(({
+        email,
+        observation,
+        start_date,
+        marine,
+        boat,
+        sailor,
+      }) => ({
+        email,
+        start_date,
+        marine_name: marine.name,
+        boat_name: boat.name,
+        sailor_name: sailor.name,
+        observation,
+      }));
+      this.setState({ schedules: data });
     } catch (error) {
       toast.error(error.message);
     }
