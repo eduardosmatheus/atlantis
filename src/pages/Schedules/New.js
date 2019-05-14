@@ -71,7 +71,7 @@ export default class ScheduleForm extends PureComponent {
         boat_id: boat && boat.id,
         marine_id: marine && marine.id,
         sailor_id: null,//sailor && sailor.id,
-        schedule_date: date,
+        start_date: date,
         email,
         observation
       });
