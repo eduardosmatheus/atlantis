@@ -8,7 +8,7 @@ import {
 import Layout from '../pages/Layout';
 import SignIn from '../pages/SignIn';
 import Register from '../pages/Register';
-import axios from '../../axios-common';
+import axios from '../axios-common';
 
 function useAuthStatus() {
   const [isAuthenticated, setIsAuthenticate] = useState(!!localStorage.getItem('app.authToken'));
