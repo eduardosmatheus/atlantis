@@ -68,12 +68,14 @@ export default class ScheduleForm extends PureComponent {
     } = this.state;
     try {
       await axios.post('/secure/schedules', {
-        boat_id: boat && boat.id,
-        marine_id: marine && marine.id,
-        sailor_id: null,//sailor && sailor.id,
-        start_date: date,
-        email,
-        observation
+        schedule: {
+          boat_id: boat && boat.id,
+          marine_id: marine && marine.id,
+          sailor_id: null,//sailor && sailor.id,
+          start_date: new Date(date).toISOString(),
+          email,
+          observation
+        }
       });
       toast.success('Agendamento cadastrado com sucesso!!');
     } catch (error) {
