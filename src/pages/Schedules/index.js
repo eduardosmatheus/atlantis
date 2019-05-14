@@ -35,7 +35,7 @@ const columns = [
     sortable: true,
     cell: (record) => {
       return (
-        <span>{new Date(record.schedule_date).toLocaleString()}</span>
+        <span>{new Date(record.start_date).toLocaleString()}</span>
       );
     }
   },
