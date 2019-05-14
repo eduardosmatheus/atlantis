@@ -26,7 +26,7 @@ export class MarinesForm extends Component {
     e.preventDefault();
     const name = e.target.name.value;
     try {
-      await axios.post('/secure/marines', { name });
+      await axios.post('/secure/marines', { marine: { name } });
       toast.success('Cadastro realizado com sucesso.');
     } catch (error) {
       toast.error(error.message);

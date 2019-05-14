@@ -111,8 +111,12 @@ class Sailors extends Component {
     [name]: value
   })
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.loadSchedules();
+  }
+
   loadSchedules = async () => {
-    // e.preventDefault();
     const {
       initialDate,
       finalDate,
@@ -164,7 +168,7 @@ class Sailors extends Component {
         <Card>
           <Card.Header>Agendamentos</Card.Header>
           <Card.Body>
-          <Form onSubmit={this.loadSchedules}>
+          <Form onSubmit={this.handleSubmit}>
               <Form.Row>
                 <FormGroup as={Col} md="3">
                   <FormLabel>De:</FormLabel>

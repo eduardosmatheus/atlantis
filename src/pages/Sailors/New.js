@@ -12,7 +12,7 @@ import {
 import { toast } from 'react-toastify';
 import axios from '../../axios-common';
 
-export class MarinesForm extends Component {
+export class SailorsForm extends Component {
 
   state = {
     name: ''
@@ -26,7 +26,7 @@ export class MarinesForm extends Component {
     e.preventDefault();
     const name = e.target.name.value;
     try {
-      await axios.post('/secure/marines', { name });
+      await axios.post('/secure/sailors', { sailor: { name } });
       toast.success('Cadastro realizado com sucesso.');
     } catch (error) {
       toast.error(error.message);
@@ -38,7 +38,7 @@ export class MarinesForm extends Component {
   render() {
     return (
       <Card>
-        <Card.Header>Nova marina</Card.Header>
+        <Card.Header>Novo Marinheiro</Card.Header>
         <Card.Body>
           <Form inline onSubmit={this.onSubmit}>
             <FormGroup as={Row}>
@@ -63,4 +63,4 @@ export class MarinesForm extends Component {
   }
 }
 
-export default MarinesForm;
+export default SailorsForm;
