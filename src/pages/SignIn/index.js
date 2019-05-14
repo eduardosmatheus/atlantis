@@ -9,7 +9,7 @@ import {
   FormControl,
   Button
 } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import axios from '../../axios-common';
 
 class Login extends Component {
@@ -20,12 +20,14 @@ class Login extends Component {
       email,
       password,
     } = this.state;
+    const { history } = this.props;
     try {
       const { data } = await axios.post('/sign_in', {
         email, password
       });
       localStorage.setItem('app.authToken', data.jwt);
       toast.success('Login efetuado com sucesso!');
+      history.push('/');
     } catch (err) {
       toast.error(err.message);
     }
@@ -38,7 +40,6 @@ class Login extends Component {
   render() {
     return (
       <div className="app flex-row align-items-center">
-        <ToastContainer />
         <Container>
           <Row className="justify-content-center">
             <Card className="p-4">
