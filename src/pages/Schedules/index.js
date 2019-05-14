@@ -128,7 +128,6 @@ class Sailors extends Component {
           boat_id: boat && boat.id
         }
       });
-      console.log(schedules);
       const data = schedules.data.map(({
         email,
         observation,
