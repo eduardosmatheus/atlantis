@@ -33,6 +33,11 @@ const columns = [
     align: 'left',
     width: 100,
     sortable: true,
+    cell: (record) => {
+      return (
+        <span>{new Date(record.schedule_date).toLocaleString()}</span>
+      );
+    }
   },
   {
     key: 'observation',
@@ -90,6 +95,7 @@ class Sailors extends Component {
 
   componentDidMount() {
     this.handleLoadDependencies();
+    this.loadSchedules();
   }
 
   handleLoadDependencies = async () => {
@@ -105,8 +111,8 @@ class Sailors extends Component {
     [name]: value
   })
 
-  loadSchedules = async (e) => {
-    e.preventDefault();
+  loadSchedules = async () => {
+    // e.preventDefault();
     const {
       initialDate,
       finalDate,
