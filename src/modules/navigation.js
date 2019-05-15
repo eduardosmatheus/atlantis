@@ -21,7 +21,6 @@ export default {
           icon: 'fa fa-list',
         },
       ]
-
     },
     {
       name: 'Marinheiros',
