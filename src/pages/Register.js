@@ -26,15 +26,17 @@ class Register extends React.PureComponent {
       password,
       confirmation,
     } = this.state;
+    const { history } = this.props;
     try {
-      await axios.post('/sign_up', {
+      const { jwt } = await axios.post('/sign_up', {
         user: {
           email,
           password,
           password_confirmation: confirmation,
         }
       });
-      toast.success('Cadastro efetuado com sucesso!');
+      localStorage.setItem('app.authToken', jwt);
+      history.push('/');
     } catch (err) {
       toast.error(err.message);
     }
