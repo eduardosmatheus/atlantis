@@ -28,7 +28,7 @@ class Register extends React.PureComponent {
     } = this.state;
     const { history } = this.props;
     try {
-      const { jwt } = await axios.post('/sign_up', {
+      const { data: { jwt } } = await axios.post('/sign_up', {
         user: {
           email,
           password,
