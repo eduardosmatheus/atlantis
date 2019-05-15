@@ -8,16 +8,20 @@ import Layout from '../pages/Layout';
 import SignIn from '../pages/SignIn';
 import Register from '../pages/Register';
 import ProtectedRoute from "./ProtectedRoute";
+import { ToastContainer } from "react-toastify";
 
 function AppRouter() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/signin" component={SignIn} />
-        <Route exact path="/signup" component={Register} />
-        <ProtectedRoute path="/" component={Layout} />
-      </Switch>
-    </Router>
+    <>
+      <ToastContainer />
+      <Router>
+        <Switch>
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/signup" component={Register} />
+          <ProtectedRoute path="/" component={Layout} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
