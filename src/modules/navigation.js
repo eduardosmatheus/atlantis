@@ -21,17 +21,40 @@ export default {
           icon: 'fa fa-list',
         },
       ]
-
     },
     {
       name: 'Marinheiros',
       icon: 'fa fa-male',
       url: '/sailors',
+      children: [
+        {
+          name: 'Novo marinheiro',
+          url: '/sailors/new',
+          icon: 'fa fa-plus',
+        },
+        {
+          name: 'Listar Marinheiros',
+          url: '/sailors/list',
+          icon: 'fa fa-list',
+        },
+      ]
     },
     {
       name: 'Embarcações',
       url: '/boats',
       icon: 'fa fa-ship',
+      children: [
+        {
+          name: 'Nova embarcação',
+          url: '/boats/new',
+          icon: 'fa fa-plus',
+        },
+        {
+          name: 'Listar embarcações',
+          url: '/boats/list',
+          icon: 'fa fa-list',
+        },
+      ]
     },
     {
       name: 'Agenda',

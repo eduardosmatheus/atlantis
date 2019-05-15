@@ -3,7 +3,7 @@ import {
   Card,
   Button,
   Form,
-  Container,
+  InputGroup,
 } from 'react-bootstrap';
 import axios from '../axios-common';
 import { toast } from 'react-toastify'
@@ -26,15 +26,17 @@ class Register extends React.PureComponent {
       password,
       confirmation,
     } = this.state;
+    const { history } = this.props;
     try {
-      await axios.post('/signup', {
+      const { data: { jwt } } = await axios.post('/sign_up', {
         user: {
           email,
           password,
-          confirmation,
+          password_confirmation: confirmation,
         }
       });
-      toast.success('Cadastro efetuado com sucesso!');
+      localStorage.setItem('app.authToken', jwt);
+      history.push('/');
     } catch (err) {
       toast.error(err.message);
     }
@@ -46,53 +48,76 @@ class Register extends React.PureComponent {
       password,
       confirmation,
     } = this.state;
+
     return (
-      <Container>
-        <Card>
+      <div
+        className="app flex-row align-items-center"
+      >
+        <Card style={{ margin: 'auto' }}>
           <Card.Header>Criar nova conta</Card.Header>
           <Card.Body>
-            <Form>
+            <Form onSubmit={this.handleSignup}>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Endereço de E-mail</Form.Label>
-                <Form.Control type="email" placeholder="Digite seu e-mail" />
-                <Form.Text
-                  className="text-muted"
-                  onChange={this.handleEmail}
-                  value={email}
-                >
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <i className="fa fa-user" />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    required
+                    type="email"
+                    placeholder="Digite seu e-mail"
+                    value={email}
+                    onChange={this.handleEmail}
+                  />
+                </InputGroup>
+                <Form.Text className="text-muted">
                   Nós não compartilhamos seu endereço de e-mail com ninguém.
                 </Form.Text>
               </Form.Group>
-
               <Form.Group controlId="formBasicPassword">
                 <Form.Label>Senha</Form.Label>
-                <Form.Control
-                  type="password"
-                  onChange={this.handlePassword}
-                  placeholder="Digite sua senha"
-                  value={password}
-                />
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <i className="fa fa-key" />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    required
+                    type="password"
+                    onChange={this.handlePassword}
+                    placeholder="Digite sua senha"
+                    value={password}
+                  />
+                </InputGroup>
               </Form.Group>
-              <Form.Group controlId="formBasicPassword">
+              <Form.Group controlId="formBasicPasswdConfirmation">
                 <Form.Label>Confirmação de senha</Form.Label>
-                <Form.Control
-                  type="password"
-                  onChange={this.handleConfirmation}
-                  placeholder="Confirme sua senha"
-                  value={confirmation}
-                />
+                <InputGroup>
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>
+                      <i className="fa fa-key" />
+                    </InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <Form.Control
+                    required
+                    type="password"
+                    onChange={this.handleConfirmation}
+                    placeholder="Confirme sua senha"
+                    value={confirmation}
+                  />
+                </InputGroup>
               </Form.Group>
-              <Button
-                variant="success"
-                type="submit"
-                onClick={this.handleSignup}
-              >
+              <Button variant="success" type="submit">
                 Cadastrar
               </Button>
             </Form>
           </Card.Body>
         </Card>
-      </Container>
+      </div>
     );
   }
 }

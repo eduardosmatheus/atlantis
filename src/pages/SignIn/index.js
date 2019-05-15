@@ -26,13 +26,16 @@ class Login extends Component {
         email, password
       });
       localStorage.setItem('app.authToken', data.jwt);
-      toast.success('Login efetuado com sucesso!');
       history.push('/');
     } catch (err) {
       toast.error(err.message);
     }
   }
 
+  handleRegister = () => {
+    const { history } = this.props;
+    history.push('/signup');
+  }
   handleEmail = ({ target: { value: email }}) => this.setState({ email });
 
   handlePassword = ({ target: { value: password }}) => this.setState({ password });
@@ -74,12 +77,12 @@ class Login extends Component {
                       onChange={this.handlePassword}
                     />
                   </InputGroup>
-                  <Row>
+                  <Form.Row>
                     <Col>
                       <Button
                         type="submit"
                         variant="primary"
-                        className="px-4"
+                        className="px-3"
                       >
                         <i className="fa fa-sign-in" />
                         {' '}
@@ -87,12 +90,21 @@ class Login extends Component {
                       </Button>
                     </Col>
                     <Col>
-                      <Button variant="link">
-                        Forgot password?
+                      <Button variant="link" onClick={this.handleRegister}>
+                        <i className="fa fa-sign-in" />
+                        {' '}
+                        Registre-se
                       </Button>
                     </Col>
-                  </Row>
+                  </Form.Row>
                 </Form>
+                <Row>
+                  <Col>
+                    <Button variant="link">
+                      Esqueceu sua senha?
+                    </Button>
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
           </Row>
